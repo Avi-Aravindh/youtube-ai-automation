@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- AutoPilotAI Logo - Circular automation loop with play/forward symbol -->
+
+  <!-- Dark background -->
+  <circle cx="250" cy="250" r="240" fill="#0F172A"/>
+
+  <!-- Outer automation ring with dashes (conveyor/loop concept) -->
+  <circle cx="250" cy="250" r="180" fill="none" stroke="#10B981" stroke-width="6"
+          stroke-dasharray="30 15"/>
+
+  <!-- Inner solid ring -->
+  <circle cx="250" cy="250" r="140" fill="none" stroke="#10B981" stroke-width="3"/>
+
+  <!-- Rotating arrows (automation cycle) -->
+  <!-- Arrow 1 - Top -->
+  <path d="M250 70 L265 95 L250 85 L235 95 Z" fill="#34D399"/>
+  <!-- Arrow 2 - Right -->
+  <path d="M430 250 L405 265 L415 250 L405 235 Z" fill="#34D399"/>
+  <!-- Arrow 3 - Bottom -->
+  <path d="M250 430 L235 405 L250 415 L265 405 Z" fill="#34D399"/>
+  <!-- Arrow 4 - Left -->
+  <path d="M70 250 L95 235 L85 250 L95 265 Z" fill="#34D399"/>
+
+  <!-- Central play/forward triangle (autopilot engaged) -->
+  <polygon points="220,175 220,325 340,250" fill="#10B981"/>
+
+  <!-- Inner circuit detail on triangle -->
+  <polygon points="235,200 235,300 310,250" fill="#0F172A"/>
+  <polygon points="250,220 250,280 285,250" fill="#10B981"/>
+
+  <!-- AI indicator - small dots forming "AI" pattern -->
+  <circle cx="260" cy="240" r="4" fill="#FFFFFF"/>
+  <circle cx="260" cy="260" r="4" fill="#FFFFFF"/>
+  <circle cx="270" cy="250" r="4" fill="#FFFFFF"/>
+
+  <!-- Speed lines (automation in motion) -->
+  <line x1="150" y1="200" x2="180" y2="200" stroke="#34D399" stroke-width="3" stroke-linecap="round"/>
+  <line x1="140" y1="230" x2="175" y2="230" stroke="#34D399" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <line x1="140" y1="270" x2="175" y2="270" stroke="#34D399" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <line x1="150" y1="300" x2="180" y2="300" stroke="#34D399" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Pulse rings around center -->
+  <circle cx="270" cy="250" r="60" fill="none" stroke="#34D399" stroke-width="1" opacity="0.4"/>
+  <circle cx="270" cy="250" r="80" fill="none" stroke="#34D399" stroke-width="1" opacity="0.2"/>
+</svg>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Synthflow Logo - Flowing wave pattern with neural nodes -->
+
+  <!-- Background circle -->
+  <circle cx="250" cy="250" r="240" fill="#0F172A"/>
+
+  <!-- Main flowing S-curve representing synthesis/flow -->
+  <path d="M120 320 Q180 320 200 280 Q220 240 250 240 Q280 240 300 200 Q320 160 380 160"
+        stroke="#3B82F6" stroke-width="24" stroke-linecap="round" fill="none"/>
+
+  <!-- Secondary flow line (offset) -->
+  <path d="M120 360 Q180 360 200 320 Q220 280 250 280 Q280 280 300 240 Q320 200 380 200"
+        stroke="#3B82F6" stroke-width="16" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+  <!-- Third flow line -->
+  <path d="M120 280 Q180 280 200 240 Q220 200 250 200 Q280 200 300 160 Q320 120 380 120"
+        stroke="#3B82F6" stroke-width="16" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+  <!-- Neural nodes along the main flow -->
+  <circle cx="120" cy="320" r="12" fill="#60A5FA"/>
+  <circle cx="200" cy="280" r="10" fill="#60A5FA"/>
+  <circle cx="250" cy="240" r="14" fill="#FFFFFF"/>
+  <circle cx="300" cy="200" r="10" fill="#60A5FA"/>
+  <circle cx="380" cy="160" r="12" fill="#60A5FA"/>
+
+  <!-- Data pulse dots -->
+  <circle cx="160" cy="300" r="5" fill="#93C5FD"/>
+  <circle cx="225" cy="258" r="5" fill="#93C5FD"/>
+  <circle cx="275" cy="220" r="5" fill="#93C5FD"/>
+  <circle cx="340" cy="178" r="5" fill="#93C5FD"/>
+
+  <!-- Stylized "S" integrated into flow -->
+  <path d="M230 180 Q200 180 200 210 Q200 240 250 250 Q300 260 300 290 Q300 320 270 320"
+        stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.3"/>
+</svg>

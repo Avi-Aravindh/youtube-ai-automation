@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- NeuralNest Logo - Hexagonal nest with neural network pattern -->
+
+  <!-- Dark background -->
+  <circle cx="250" cy="250" r="240" fill="#0F172A"/>
+
+  <!-- Outer hexagon (nest shape) -->
+  <polygon points="250,60 410,145 410,315 250,400 90,315 90,145"
+           fill="none" stroke="#8B5CF6" stroke-width="8"/>
+
+  <!-- Middle hexagon -->
+  <polygon points="250,100 370,165 370,295 250,360 130,295 130,165"
+           fill="none" stroke="#8B5CF6" stroke-width="4" opacity="0.6"/>
+
+  <!-- Inner hexagon -->
+  <polygon points="250,140 330,185 330,275 250,320 170,275 170,185"
+           fill="none" stroke="#8B5CF6" stroke-width="3" opacity="0.4"/>
+
+  <!-- Central brain/neural node -->
+  <circle cx="250" cy="230" r="45" fill="#8B5CF6"/>
+  <circle cx="250" cy="230" r="30" fill="#0F172A"/>
+  <circle cx="250" cy="230" r="18" fill="#A78BFA"/>
+
+  <!-- Neural connections from center to vertices -->
+  <line x1="250" y1="230" x2="250" y2="100" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+  <line x1="250" y1="230" x2="370" y2="165" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+  <line x1="250" y1="230" x2="370" y2="295" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+  <line x1="250" y1="230" x2="250" y2="360" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+  <line x1="250" y1="230" x2="130" y2="295" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+  <line x1="250" y1="230" x2="130" y2="165" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+
+  <!-- Neural nodes at hexagon vertices -->
+  <circle cx="250" cy="100" r="10" fill="#C4B5FD"/>
+  <circle cx="370" cy="165" r="10" fill="#C4B5FD"/>
+  <circle cx="370" cy="295" r="10" fill="#C4B5FD"/>
+  <circle cx="250" cy="360" r="10" fill="#C4B5FD"/>
+  <circle cx="130" cy="295" r="10" fill="#C4B5FD"/>
+  <circle cx="130" cy="165" r="10" fill="#C4B5FD"/>
+
+  <!-- Interconnecting lines between vertices (nest pattern) -->
+  <line x1="250" y1="100" x2="370" y2="165" stroke="#8B5CF6" stroke-width="2" opacity="0.3"/>
+  <line x1="370" y1="165" x2="370" y2="295" stroke="#8B5CF6" stroke-width="2" opacity="0.3"/>
+  <line x1="370" y1="295" x2="250" y2="360" stroke="#8B5CF6" stroke-width="2" opacity="0.3"/>
+  <line x1="250" y1="360" x2="130" y2="295" stroke="#8B5CF6" stroke-width="2" opacity="0.3"/>
+  <line x1="130" y1="295" x2="130" y2="165" stroke="#8B5CF6" stroke-width="2" opacity="0.3"/>
+  <line x1="130" y1="165" x2="250" y2="100" stroke="#8B5CF6" stroke-width="2" opacity="0.3"/>
+
+  <!-- Secondary nodes (mid-points) -->
+  <circle cx="310" cy="132" r="6" fill="#DDD6FE"/>
+  <circle cx="370" cy="230" r="6" fill="#DDD6FE"/>
+  <circle cx="310" cy="328" r="6" fill="#DDD6FE"/>
+  <circle cx="190" cy="328" r="6" fill="#DDD6FE"/>
+  <circle cx="130" cy="230" r="6" fill="#DDD6FE"/>
+  <circle cx="190" cy="132" r="6" fill="#DDD6FE"/>
+
+  <!-- Small "N" indicator in center -->
+  <path d="M240 240 L240 220 L260 240 L260 220" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
