@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoPilotAI - YouTube Banner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #0a0a0a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .banner-container {
+      width: 2560px;
+      height: 1440px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #022C22 0%, #064E3B 30%, #0F172A 70%, #0C0F1A 100%);
+      transform-origin: top left;
+      transform: scale(0.35);
+    }
+
+    /* Circuit board pattern */
+    .circuit-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(90deg, #10B981 1px, transparent 1px),
+        linear-gradient(#10B981 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Glowing orb effects */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+    }
+
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: rgba(16, 185, 129, 0.2);
+      top: -150px;
+      left: 20%;
+    }
+
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: rgba(52, 211, 153, 0.15);
+      bottom: 10%;
+      right: 15%;
+    }
+
+    /* Main content */
+    .content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    /* Logo */
+    .logo {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 40px;
+    }
+
+    /* Channel name with play button styling */
+    .channel-name-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .play-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(16, 185, 129, 0.4);
+    }
+
+    .play-icon svg {
+      width: 35px;
+      height: 35px;
+      fill: #FFFFFF;
+      margin-left: 6px;
+    }
+
+    .channel-name {
+      font-size: 120px;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    .channel-name .auto {
+      color: #FFFFFF;
+    }
+
+    .channel-name .pilot {
+      color: #34D399;
+    }
+
+    .channel-name .ai {
+      color: #6EE7B7;
+      font-weight: 600;
+    }
+
+    /* Tagline */
+    .tagline {
+      font-size: 40px;
+      font-weight: 500;
+      color: #A7F3D0;
+      margin-top: 25px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    /* Automation cycle rings */
+    .cycle-ring {
+      position: absolute;
+      border: 2px solid rgba(16, 185, 129, 0.2);
+      border-radius: 50%;
+    }
+
+    .cycle-ring:nth-child(1) {
+      width: 900px;
+      height: 900px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-style: dashed;
+    }
+
+    .cycle-ring:nth-child(2) {
+      width: 1100px;
+      height: 1100px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .cycle-ring:nth-child(3) {
+      width: 1300px;
+      height: 1300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-style: dotted;
+      opacity: 0.5;
+    }
+
+    /* Speed lines */
+    .speed-line {
+      position: absolute;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, #10B981 30%, #34D399 70%, transparent 100%);
+      border-radius: 2px;
+    }
+
+    .speed-line:nth-child(1) { top: 22%; left: 8%; width: 200px; opacity: 0.6; }
+    .speed-line:nth-child(2) { top: 28%; left: 5%; width: 150px; opacity: 0.4; }
+    .speed-line:nth-child(3) { bottom: 25%; right: 6%; width: 180px; opacity: 0.5; }
+    .speed-line:nth-child(4) { bottom: 30%; right: 4%; width: 120px; opacity: 0.3; }
+
+    /* Topics bar */
+    .topics-bar {
+      position: absolute;
+      bottom: 150px;
+      display: flex;
+      gap: 60px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .topic-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #6EE7B7;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .topic-item::before {
+      content: "▶";
+      font-size: 14px;
+      color: #10B981;
+    }
+
+    /* Corner accents */
+    .corner-accent {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 3px solid #10B981;
+      opacity: 0.3;
+    }
+
+    .corner-accent.top-left {
+      top: 80px;
+      left: 80px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .corner-accent.top-right {
+      top: 80px;
+      right: 80px;
+      border-left: none;
+      border-bottom: none;
+    }
+
+    .corner-accent.bottom-left {
+      bottom: 80px;
+      left: 80px;
+      border-right: none;
+      border-top: none;
+    }
+
+    .corner-accent.bottom-right {
+      bottom: 80px;
+      right: 80px;
+      border-left: none;
+      border-top: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner-container">
+    <!-- Circuit background -->
+    <div class="circuit-bg"></div>
+
+    <!-- Glowing orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- Automation cycle rings -->
+    <div class="cycle-ring"></div>
+    <div class="cycle-ring"></div>
+    <div class="cycle-ring"></div>
+
+    <!-- Speed lines -->
+    <div class="speed-line"></div>
+    <div class="speed-line"></div>
+    <div class="speed-line"></div>
+    <div class="speed-line"></div>
+
+    <!-- Corner accents -->
+    <div class="corner-accent top-left"></div>
+    <div class="corner-accent top-right"></div>
+    <div class="corner-accent bottom-left"></div>
+    <div class="corner-accent bottom-right"></div>
+
+    <!-- Main content -->
+    <div class="content">
+      <!-- Inline SVG Logo -->
+      <svg class="logo" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="250" cy="250" r="240" fill="#0F172A"/>
+        <circle cx="250" cy="250" r="180" fill="none" stroke="#10B981" stroke-width="6" stroke-dasharray="30 15"/>
+        <circle cx="250" cy="250" r="140" fill="none" stroke="#10B981" stroke-width="3"/>
+        <path d="M250 70 L265 95 L250 85 L235 95 Z" fill="#34D399"/>
+        <path d="M430 250 L405 265 L415 250 L405 235 Z" fill="#34D399"/>
+        <path d="M250 430 L235 405 L250 415 L265 405 Z" fill="#34D399"/>
+        <path d="M70 250 L95 235 L85 250 L95 265 Z" fill="#34D399"/>
+        <polygon points="220,175 220,325 340,250" fill="#10B981"/>
+        <polygon points="235,200 235,300 310,250" fill="#0F172A"/>
+        <polygon points="250,220 250,280 285,250" fill="#10B981"/>
+      </svg>
+
+      <div class="channel-name-wrapper">
+        <div class="play-icon">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <h1 class="channel-name">
+          <span class="auto">Auto</span><span class="pilot">Pilot</span><span class="ai">AI</span>
+        </h1>
+      </div>
+      <p class="tagline">Set It. Forget It. Scale It.</p>
+    </div>
+
+    <!-- Topics bar -->
+    <div class="topics-bar">
+      <span class="topic-item">ChatGPT Automations</span>
+      <span class="topic-item">Claude AI Workflows</span>
+      <span class="topic-item">No-Code Apps</span>
+      <span class="topic-item">Zapier & Make</span>
+    </div>
+  </div>
+</body>
+</html>

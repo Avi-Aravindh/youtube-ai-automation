@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuralNest - YouTube Banner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .banner-container {
+      width: 2560px;
+      height: 1440px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #0C0A1D 0%, #1A1333 50%, #0F0D1F 100%);
+      transform-origin: top left;
+      transform: scale(0.35);
+    }
+
+    /* Hexagonal grid background */
+    .hex-grid {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='86.6'%3E%3Cpolygon fill='none' stroke='%238B5CF6' stroke-width='0.5' stroke-opacity='0.1' points='50,0 100,25 100,75 50,100 0,75 0,25'/%3E%3C/svg%3E");
+      background-size: 100px 86.6px;
+      opacity: 0.5;
+    }
+
+    /* Purple glow effects */
+    .glow-1 {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .glow-2 {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.15) 0%, transparent 70%);
+      bottom: -100px;
+      right: 10%;
+    }
+
+    /* Main content */
+    .content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    /* Logo */
+    .logo {
+      width: 220px;
+      height: 220px;
+      margin-bottom: 50px;
+    }
+
+    /* Channel name */
+    .channel-name {
+      font-size: 130px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -1px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .channel-name .neural {
+      color: #C4B5FD;
+    }
+
+    .channel-name .nest {
+      background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Tagline */
+    .tagline {
+      font-size: 38px;
+      font-weight: 400;
+      color: #A78BFA;
+      margin-top: 30px;
+      letter-spacing: 2px;
+    }
+
+    /* Decorative hexagons */
+    .hex-decor {
+      position: absolute;
+      stroke: #8B5CF6;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .hex-1 {
+      width: 150px;
+      height: 150px;
+      top: 15%;
+      left: 10%;
+      opacity: 0.4;
+    }
+
+    .hex-2 {
+      width: 100px;
+      height: 100px;
+      top: 20%;
+      right: 15%;
+      opacity: 0.3;
+    }
+
+    .hex-3 {
+      width: 80px;
+      height: 80px;
+      bottom: 25%;
+      left: 15%;
+      opacity: 0.25;
+    }
+
+    .hex-4 {
+      width: 120px;
+      height: 120px;
+      bottom: 20%;
+      right: 12%;
+      opacity: 0.35;
+    }
+
+    /* Neural connection lines */
+    .neural-lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .neural-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, #8B5CF6 50%, transparent 100%);
+    }
+
+    /* Topics area */
+    .topics-container {
+      position: absolute;
+      bottom: 160px;
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .topic-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 36px;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 12px;
+    }
+
+    .topic-icon {
+      width: 28px;
+      height: 28px;
+      color: #A78BFA;
+    }
+
+    .topic-text {
+      color: #DDD6FE;
+      font-size: 26px;
+      font-weight: 500;
+    }
+
+    /* Floating neural nodes */
+    .neural-node {
+      position: absolute;
+      border-radius: 50%;
+      background: #8B5CF6;
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+    }
+
+    .neural-node:nth-child(1) { width: 16px; height: 16px; top: 12%; left: 25%; }
+    .neural-node:nth-child(2) { width: 12px; height: 12px; top: 18%; right: 30%; }
+    .neural-node:nth-child(3) { width: 10px; height: 10px; bottom: 28%; left: 22%; }
+    .neural-node:nth-child(4) { width: 14px; height: 14px; bottom: 22%; right: 25%; }
+    .neural-node:nth-child(5) { width: 8px; height: 8px; top: 35%; left: 12%; }
+    .neural-node:nth-child(6) { width: 10px; height: 10px; bottom: 35%; right: 8%; }
+  </style>
+</head>
+<body>
+  <div class="banner-container">
+    <!-- Hexagonal grid background -->
+    <div class="hex-grid"></div>
+
+    <!-- Glow effects -->
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+
+    <!-- Decorative hexagons -->
+    <svg class="hex-decor hex-1" viewBox="0 0 100 86.6">
+      <polygon points="50,0 100,25 100,75 50,100 0,75 0,25"/>
+    </svg>
+    <svg class="hex-decor hex-2" viewBox="0 0 100 86.6">
+      <polygon points="50,0 100,25 100,75 50,100 0,75 0,25"/>
+    </svg>
+    <svg class="hex-decor hex-3" viewBox="0 0 100 86.6">
+      <polygon points="50,0 100,25 100,75 50,100 0,75 0,25"/>
+    </svg>
+    <svg class="hex-decor hex-4" viewBox="0 0 100 86.6">
+      <polygon points="50,0 100,25 100,75 50,100 0,75 0,25"/>
+    </svg>
+
+    <!-- Neural nodes -->
+    <div class="neural-node"></div>
+    <div class="neural-node"></div>
+    <div class="neural-node"></div>
+    <div class="neural-node"></div>
+    <div class="neural-node"></div>
+    <div class="neural-node"></div>
+
+    <!-- Main content -->
+    <div class="content">
+      <!-- Inline SVG Logo -->
+      <svg class="logo" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="250" cy="250" r="240" fill="#0F172A"/>
+        <polygon points="250,60 410,145 410,315 250,400 90,315 90,145" fill="none" stroke="#8B5CF6" stroke-width="8"/>
+        <polygon points="250,100 370,165 370,295 250,360 130,295 130,165" fill="none" stroke="#8B5CF6" stroke-width="4" opacity="0.6"/>
+        <polygon points="250,140 330,185 330,275 250,320 170,275 170,185" fill="none" stroke="#8B5CF6" stroke-width="3" opacity="0.4"/>
+        <circle cx="250" cy="230" r="45" fill="#8B5CF6"/>
+        <circle cx="250" cy="230" r="30" fill="#0F172A"/>
+        <circle cx="250" cy="230" r="18" fill="#A78BFA"/>
+        <line x1="250" y1="230" x2="250" y2="100" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+        <line x1="250" y1="230" x2="370" y2="165" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+        <line x1="250" y1="230" x2="370" y2="295" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+        <line x1="250" y1="230" x2="250" y2="360" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+        <line x1="250" y1="230" x2="130" y2="295" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+        <line x1="250" y1="230" x2="130" y2="165" stroke="#A78BFA" stroke-width="2" opacity="0.8"/>
+        <circle cx="250" cy="100" r="10" fill="#C4B5FD"/>
+        <circle cx="370" cy="165" r="10" fill="#C4B5FD"/>
+        <circle cx="370" cy="295" r="10" fill="#C4B5FD"/>
+        <circle cx="250" cy="360" r="10" fill="#C4B5FD"/>
+        <circle cx="130" cy="295" r="10" fill="#C4B5FD"/>
+        <circle cx="130" cy="165" r="10" fill="#C4B5FD"/>
+      </svg>
+
+      <h1 class="channel-name">
+        <span class="neural">Neural</span><span class="nest">Nest</span>
+      </h1>
+      <p class="tagline">Where AI Knowledge Lives</p>
+    </div>
+
+    <!-- Topic cards -->
+    <div class="topics-container">
+      <div class="topic-card">
+        <svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <span class="topic-text">AI Tutorials</span>
+      </div>
+      <div class="topic-card">
+        <svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v6m0 6v10M1 12h6m6 0h10"/>
+        </svg>
+        <span class="topic-text">Automation</span>
+      </div>
+      <div class="topic-card">
+        <svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <path d="M8 21h8m-4-4v4"/>
+        </svg>
+        <span class="topic-text">No-Code Tools</span>
+      </div>
+      <div class="topic-card">
+        <svg class="topic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+        </svg>
+        <span class="topic-text">AI Workflows</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
