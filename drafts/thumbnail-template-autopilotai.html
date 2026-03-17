@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoPilotAI - Thumbnail Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #0a0a0a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px;
+      gap: 40px;
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .thumbnail-container {
+      width: 1280px;
+      height: 720px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #022C22 0%, #064E3B 40%, #0F172A 100%);
+      border-radius: 16px;
+      transform: scale(0.5);
+      transform-origin: center;
+    }
+
+    /* Circuit pattern */
+    .circuit-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background-image:
+        linear-gradient(90deg, #10B981 1px, transparent 1px),
+        linear-gradient(#10B981 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Green glow effects */
+    .glow-effect {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+
+    .glow-1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(16, 185, 129, 0.25);
+      top: -100px;
+      left: -100px;
+    }
+
+    .glow-2 {
+      width: 300px;
+      height: 300px;
+      background: rgba(52, 211, 153, 0.2);
+      bottom: -80px;
+      right: 20%;
+    }
+
+    /* Main content - Bold asymmetric layout */
+    .content {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      padding: 50px;
+    }
+
+    /* Top section with play button and title */
+    .top-section {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    /* Big play button */
+    .play-button {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 0 8px rgba(16, 185, 129, 0.2),
+        0 0 60px rgba(16, 185, 129, 0.4);
+      flex-shrink: 0;
+    }
+
+    .play-button svg {
+      width: 50px;
+      height: 50px;
+      fill: #FFFFFF;
+      margin-left: 8px;
+    }
+
+    /* Title block */
+    .title-block {
+      flex: 1;
+    }
+
+    .video-title {
+      font-size: 82px;
+      font-weight: 900;
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .video-title .line-1 {
+      color: #FFFFFF;
+    }
+
+    .video-title .line-2 {
+      color: #34D399;
+      text-shadow: 0 0 40px rgba(52, 211, 153, 0.5);
+    }
+
+    .video-title .line-3 {
+      color: #6EE7B7;
+    }
+
+    /* Subtitle */
+    .video-subtitle {
+      font-size: 30px;
+      font-weight: 500;
+      color: #A7F3D0;
+      margin-top: 20px;
+    }
+
+    /* Bottom section with screenshot */
+    .bottom-section {
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+      display: flex;
+      align-items: flex-end;
+      gap: 40px;
+    }
+
+    /* Screenshot frame */
+    .screenshot-frame {
+      width: 500px;
+      height: 280px;
+      background: linear-gradient(135deg, #064E3B 0%, #0F172A 100%);
+      border-radius: 16px;
+      border: 3px solid #10B981;
+      box-shadow:
+        0 0 0 6px rgba(16, 185, 129, 0.15),
+        0 25px 50px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .screenshot-placeholder {
+      color: #4ADE80;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      opacity: 0.6;
+    }
+
+    /* Tool logo badge */
+    .tool-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      width: 80px;
+      height: 80px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      font-size: 12px;
+      font-weight: 800;
+      color: #064E3B;
+    }
+
+    /* Episode/time badge */
+    .time-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(16, 185, 129, 0.9);
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: #FFFFFF;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* Channel branding */
+    .channel-branding {
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .channel-logo {
+      width: 55px;
+      height: 55px;
+    }
+
+    .channel-name {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .channel-name .auto {
+      color: #FFFFFF;
+    }
+
+    .channel-name .pilot {
+      color: #34D399;
+    }
+
+    .channel-name .ai {
+      color: #6EE7B7;
+    }
+
+    /* Speed lines */
+    .speed-line {
+      position: absolute;
+      height: 4px;
+      background: linear-gradient(90deg, #10B981 0%, transparent 100%);
+      border-radius: 2px;
+    }
+
+    .speed-line:nth-child(1) { top: 30%; left: 0; width: 150px; opacity: 0.5; }
+    .speed-line:nth-child(2) { top: 45%; left: 0; width: 100px; opacity: 0.3; }
+  </style>
+</head>
+<body>
+  <h2>AutoPilotAI - YouTube Thumbnail Template (1280x720px)</h2>
+
+  <div class="thumbnail-container">
+    <!-- Circuit background -->
+    <div class="circuit-bg"></div>
+
+    <!-- Glow effects -->
+    <div class="glow-effect glow-1"></div>
+    <div class="glow-effect glow-2"></div>
+
+    <!-- Speed lines -->
+    <div class="speed-line"></div>
+    <div class="speed-line"></div>
+
+    <!-- Main content -->
+    <div class="content">
+      <!-- Top section -->
+      <div class="top-section">
+        <div class="play-button">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div class="title-block">
+          <h1 class="video-title">
+            <span class="line-1">Automate</span><br>
+            <span class="line-2">Your Entire</span><br>
+            <span class="line-3">Business</span>
+          </h1>
+          <p class="video-subtitle">No-code AI tools that save 10+ hours/week</p>
+        </div>
+      </div>
+
+      <!-- Bottom section -->
+      <div class="bottom-section">
+        <div class="screenshot-frame">
+          <span class="screenshot-placeholder">[SCREENSHOT HERE]</span>
+          <div class="tool-badge">TOOL<br>LOGO</div>
+          <div class="time-badge">15 MIN</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channel branding -->
+    <div class="channel-branding">
+      <svg class="channel-logo" viewBox="0 0 500 500" fill="none">
+        <circle cx="250" cy="250" r="240" fill="#0F172A"/>
+        <circle cx="250" cy="250" r="180" fill="none" stroke="#10B981" stroke-width="6" stroke-dasharray="30 15"/>
+        <polygon points="220,175 220,325 340,250" fill="#10B981"/>
+        <polygon points="235,200 235,300 310,250" fill="#0F172A"/>
+        <polygon points="250,220 250,280 285,250" fill="#10B981"/>
+      </svg>
+      <span class="channel-name">
+        <span class="auto">Auto</span><span class="pilot">Pilot</span><span class="ai">AI</span>
+      </span>
+    </div>
+  </div>
+</body>
+</html>

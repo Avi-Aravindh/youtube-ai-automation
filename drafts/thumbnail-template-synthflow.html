@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthflow - Thumbnail Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #1a1a2e;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px;
+      gap: 40px;
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .thumbnail-container {
+      width: 1280px;
+      height: 720px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #0F172A 100%);
+      border-radius: 16px;
+      transform: scale(0.5);
+      transform-origin: center;
+    }
+
+    /* Gradient overlay for depth */
+    .gradient-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 75% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(96, 165, 250, 0.15) 0%, transparent 50%);
+    }
+
+    /* Flow lines background */
+    .flow-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+    }
+
+    .flow-line {
+      position: absolute;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #3B82F6, transparent);
+      border-radius: 2px;
+    }
+
+    .flow-line:nth-child(1) { top: 15%; width: 200px; left: -50px; }
+    .flow-line:nth-child(2) { top: 35%; width: 250px; left: -80px; }
+    .flow-line:nth-child(3) { bottom: 30%; width: 180px; left: -30px; }
+    .flow-line:nth-child(4) { bottom: 15%; width: 220px; left: -60px; }
+
+    /* Main content layout */
+    .content {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      padding: 50px;
+      z-index: 10;
+    }
+
+    /* Left side - Title area */
+    .title-area {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 40px;
+    }
+
+    /* Episode badge */
+    .episode-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59, 130, 246, 0.2);
+      border: 2px solid #3B82F6;
+      padding: 10px 20px;
+      border-radius: 100px;
+      margin-bottom: 25px;
+      width: fit-content;
+    }
+
+    .episode-badge span {
+      color: #93C5FD;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Main title */
+    .video-title {
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .video-title .highlight {
+      color: #3B82F6;
+      text-shadow: 0 0 40px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Subtitle */
+    .video-subtitle {
+      font-size: 28px;
+      font-weight: 600;
+      color: #94A3B8;
+      line-height: 1.4;
+    }
+
+    /* Right side - Visual area */
+    .visual-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Screenshot/tool placeholder */
+    .screenshot-frame {
+      width: 100%;
+      max-width: 480px;
+      height: 340px;
+      background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+      border-radius: 16px;
+      border: 3px solid #3B82F6;
+      box-shadow:
+        0 0 0 8px rgba(59, 130, 246, 0.15),
+        0 25px 50px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .screenshot-placeholder {
+      color: #64748B;
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Tool logo overlay */
+    .tool-logo {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 100px;
+      height: 100px;
+      background: #FFFFFF;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      font-size: 14px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+
+    /* Channel branding */
+    .channel-branding {
+      position: absolute;
+      bottom: 30px;
+      left: 50px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .channel-logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .channel-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #60A5FA;
+      letter-spacing: 1px;
+    }
+
+    /* Neural nodes decoration */
+    .node {
+      position: absolute;
+      border-radius: 50%;
+      background: #3B82F6;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    }
+
+    .node:nth-child(1) { width: 12px; height: 12px; top: 10%; right: 15%; }
+    .node:nth-child(2) { width: 8px; height: 8px; top: 25%; right: 8%; }
+    .node:nth-child(3) { width: 10px; height: 10px; bottom: 20%; right: 12%; }
+  </style>
+</head>
+<body>
+  <h2>Synthflow - YouTube Thumbnail Template (1280x720px)</h2>
+
+  <div class="thumbnail-container">
+    <!-- Gradient background -->
+    <div class="gradient-bg"></div>
+
+    <!-- Flow lines -->
+    <div class="flow-bg">
+      <div class="flow-line"></div>
+      <div class="flow-line"></div>
+      <div class="flow-line"></div>
+      <div class="flow-line"></div>
+    </div>
+
+    <!-- Neural nodes -->
+    <div class="node"></div>
+    <div class="node"></div>
+    <div class="node"></div>
+
+    <!-- Main content -->
+    <div class="content">
+      <!-- Left: Title -->
+      <div class="title-area">
+        <div class="episode-badge">
+          <span>AI TUTORIAL</span>
+        </div>
+        <h1 class="video-title">
+          ChatGPT<br>
+          <span class="highlight">Automation</span><br>
+          Secrets
+        </h1>
+        <p class="video-subtitle">Build your first AI workflow in 10 minutes</p>
+      </div>
+
+      <!-- Right: Visual -->
+      <div class="visual-area">
+        <div class="screenshot-frame">
+          <span class="screenshot-placeholder">[Screenshot Here]</span>
+          <div class="tool-logo">TOOL<br>LOGO</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channel branding -->
+    <div class="channel-branding">
+      <svg class="channel-logo" viewBox="0 0 500 500" fill="none">
+        <circle cx="250" cy="250" r="240" fill="#0F172A"/>
+        <path d="M120 320 Q180 320 200 280 Q220 240 250 240 Q280 240 300 200 Q320 160 380 160"
+              stroke="#3B82F6" stroke-width="24" stroke-linecap="round" fill="none"/>
+        <circle cx="250" cy="240" r="14" fill="#FFFFFF"/>
+      </svg>
+      <span class="channel-name">SYNTHFLOW</span>
+    </div>
+  </div>
+</body>
+</html>
